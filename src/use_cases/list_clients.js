@@ -3,7 +3,9 @@ class ListClients {
         this.clientRepository = clientRepository;
     }
     execute() {
-        return this.clientRepository.findAll();
+        var clients = this.clientRepository.findAll();
+        console.log(clients)
+        return clients
     }
 }
 module.exports = ListClients;

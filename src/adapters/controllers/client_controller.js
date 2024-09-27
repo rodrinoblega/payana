@@ -11,13 +11,19 @@ class ClientController {
         } = req.body;
         try {
             await this.createClient.execute(id, name, email);
-            res.status(201).send('Post created successfully.');
+            res.status(201).send('Client created successfully.');
         } catch (error) {
-            res.status(500).send('An error occurred while creating the post: ' + error);
+            res.status(500).send('An error occurred while creating the client: ' + error);
         }
     }
-    list(req, res) {
-        res.status(200).send(this.listClients.execute());
+    async list(req, res) {
+        try {
+            var clients = await this.listClients.execute()
+            res.status(200).send(clients);
+        } catch (error) {
+            res.status(500).send('An error occurred while listing clients: ' + error);
+        }
+        
     }
 }
 module.exports = ClientController;

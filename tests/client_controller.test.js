@@ -9,7 +9,6 @@ describe('GET /clients', () => {
       expect(Array.isArray(response.body)).toBe(true);
       expect(response.body.length).toBeGreaterThan(0);
   
-      // Example: check if the first user has a name and email
       expect(response.body[0]).toHaveProperty('name');
       expect(response.body[0]).toHaveProperty('email');
 
