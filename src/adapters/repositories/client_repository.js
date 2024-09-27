@@ -1,6 +1,7 @@
 class ClientRepository {
     constructor() {
-        this.clients = [];
+        var array = [{"id": 1, "name":"rodrigo", "email": "r@r.com"}]
+        this.clients = array;
     }
     save(client) {
         this.clients.push(client);
