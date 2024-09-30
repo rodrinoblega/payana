@@ -1,24 +1,26 @@
-const pool = require('../../frameworks/database');
+const RepositoryInterface = require('./repository_interface');
 
-class ClientRepository {
-    constructor() {
+class PgClientRepository extends RepositoryInterface{
+    constructor(pool) {
+        super();
+        this.pool = pool
     }
     async save(client) {
         try {
             const { id, name, email } = client;
-            const result = await pool.query(
+            const result = await this.pool.query(
             'INSERT INTO clients (id, name, email) VALUES ($1, $2, $3) RETURNING *',
             [id, name, email]
             );
-            console.log("noerror")
+
             return result.rows[0];
         } catch(error) {
             throw error;
         }
     }
     async findAll() {
-        const result = await pool.query('SELECT * FROM clients');
+        const result = await this.pool.query('SELECT * FROM clients');
         return result.rows;
     }
 }
-module.exports = ClientRepository;
+module.exports = PgClientRepository;

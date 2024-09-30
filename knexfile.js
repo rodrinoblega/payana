@@ -6,7 +6,7 @@
 module.exports = {
 
   development: {
-    client: 'pg', // Set the client to 'pg' for PostgreSQL
+    client: 'pg',
     connection: {
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'postgres',
@@ -15,40 +15,18 @@ module.exports = {
       port: process.env.DB_PORT || 5432,
     },
     migrations: {
-      directory: './migrations', // Set the directory for migrations
+      directory: './migrations',
     },
   },
 
-  staging: {
-    client: 'postgresql',
+  test: {
+    client: 'sqlite3',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
+      filename: ':memory:',
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './migrations',
+    },
+    useNullAsDefault: true,
   },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
 };

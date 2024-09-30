@@ -34,6 +34,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: example
       DB_NAME: invoice_db
+      ENV: DEV
     ports:
       - "3000:3000"
     depends_on:

@@ -2,7 +2,13 @@ const request = require('supertest');
 const app = require('../src/frameworks/app');
 
 describe('GET /clients', () => {
-    it('should return a list of clients', async () => {
+    beforeEach(async () => {
+    });
+
+    it('should create a client and return list of clients with one iteration', async () => {
+      const responsePost = await request(app).post('/client').send({"id":1, "name":"asd", "email":"asd@asd.com"});
+      expect(responsePost.status).toBe(201);
+
       const response = await request(app).get('/clients');
   
       expect(response.status).toBe(200);
@@ -14,5 +20,7 @@ describe('GET /clients', () => {
 
       const client = response.body[0]
       expect(client).toHaveProperty('id', 1);
+      expect(client).toHaveProperty('name', 'asd');
+      expect(client).toHaveProperty('email', 'asd@asd.com');
     });
   });
