@@ -1,4 +1,3 @@
-const Client = require('../entities/client.js');
 class CreateClient {
     constructor(clientRepository) {
         this.clientRepository = clientRepository;
@@ -11,4 +10,5 @@ class CreateClient {
         }
     }
 }
+
 module.exports = CreateClient;
