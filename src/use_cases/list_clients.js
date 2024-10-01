@@ -4,7 +4,6 @@ class ListClients {
     }
     execute() {
         var clients = this.clientRepository.findAll();
-        console.log(clients)
         return clients
     }
 }

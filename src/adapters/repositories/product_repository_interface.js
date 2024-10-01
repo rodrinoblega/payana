@@ -1,4 +1,4 @@
-class RepositoryInterface {
+class ProductRepositoryInterface {
     async save(data) {}
 
     async findAll() {}
@@ -8,4 +8,4 @@ class RepositoryInterface {
     async patch(id, updates) {}
 }
 
-module.exports = RepositoryInterface;
+module.exports = ProductRepositoryInterface;

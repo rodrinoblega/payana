@@ -20,7 +20,6 @@ describe('/clients', () => {
 
     it('should throw an error if I want to modify an invalid client id', async () => {
       const responseDelete = await request(app).delete('/client/asd');
-      console.log(responseDelete)
       expect(responseDelete.status).toBe(400);
       expect(responseDelete.text).toBe('Invalid client ID')
     });
@@ -39,7 +38,6 @@ describe('/clients', () => {
 
     it('should throw an error if I want to delete an no existed client id', async () => {
       const responseDelete = await request(app).delete('/client/123');
-      console.log(responseDelete)
       expect(responseDelete.status).toBe(500);
       expect(responseDelete.text).toBe('An error occurred while deleting client: Error: Client with id 123 not found')
     });

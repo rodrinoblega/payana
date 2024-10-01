@@ -1,6 +1,6 @@
-const RepositoryInterface = require('./repository_interface');
+const ClientRepositoryInterface = require('./client_repository_interface');
 
-class InMemoryRepository extends RepositoryInterface {
+class InMemoryClientRepository extends ClientRepositoryInterface {
     constructor() {
         super();
         this.clients = [];
@@ -36,4 +36,4 @@ class InMemoryRepository extends RepositoryInterface {
     }
 }
 
-module.exports = InMemoryRepository;
+module.exports = InMemoryClientRepository;

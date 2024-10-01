@@ -23,7 +23,7 @@ class ClientController {
             var clients = await this.listClients.execute()
             res.status(200).send(clients);
         } catch (error) {
-            res.status(500).send('An error occurred while creating client: ' + error);
+            res.status(500).send('An error occurred while listing clients: ' + error);
         }
         
     }
@@ -57,7 +57,7 @@ class ClientController {
         }
 
         try {
-            const updatedClient = await this.modifyClient.execute(clientId, { name, email });
+            await this.modifyClient.execute(clientId, { name, email });
             return res.status(200).json({ message: 'Client updated'});
         } catch (error) {
             res.status(500).send('An error occurred while modifying client: ' + error);
