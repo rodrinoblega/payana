@@ -3,7 +3,7 @@ class ListClients {
         this.clientRepository = clientRepository;
     }
     execute() {
-        var clients = this.clientRepository.findAll();
+        let clients = this.clientRepository.findAll();
         return clients
     }
 }

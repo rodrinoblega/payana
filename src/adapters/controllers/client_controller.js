@@ -20,7 +20,7 @@ class ClientController {
     }
     async list(req, res) {
         try {
-            var clients = await this.listClients.execute()
+            let clients = await this.listClients.execute()
             res.status(200).send(clients);
         } catch (error) {
             res.status(500).send('An error occurred while listing clients: ' + error);
@@ -35,7 +35,7 @@ class ClientController {
                 return res.status(400).send('Invalid client ID');
             }
 
-            var clients = await this.deleteClient.execute(clientId)
+            let clients = await this.deleteClient.execute(clientId)
 
             res.status(200).send(clients);
         } catch (error) {

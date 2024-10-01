@@ -20,7 +20,7 @@ class ProductController {
     }
     async list(req, res) {
         try {
-            var products = await this.listProducts.execute()
+            let products = await this.listProducts.execute()
             res.status(200).send(products);
         } catch (error) {
             res.status(500).send('An error occurred while listing products: ' + error);
@@ -35,7 +35,7 @@ class ProductController {
                 return res.status(400).send('Invalid product ID');
             }
 
-            var products = await this.deleteProduct.execute(productId)
+            let products = await this.deleteProduct.execute(productId)
 
             res.status(200).send(products);
         } catch (error) {

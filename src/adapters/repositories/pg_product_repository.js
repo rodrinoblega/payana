@@ -1,4 +1,6 @@
 const ProductRepositoryInterface = require('./product_repository_interface');
+const Product = require('./../../entities/product')
+
 
 class PgProductRepository extends ProductRepositoryInterface{
     constructor(pool) {
@@ -13,7 +15,7 @@ class PgProductRepository extends ProductRepositoryInterface{
             [id, name, price]
             );
 
-            return result.rows[0];
+            return new Product(result.rows[0].id, result.rows[0].name, result.rows[0].price);
         } catch(error) {
             throw error;
         }
@@ -34,7 +36,7 @@ class PgProductRepository extends ProductRepositoryInterface{
                 throw new Error(`Product with id ${id} not found`);
             }
     
-            return result.rows[0];
+            return new Product(result.rows[0].id, result.rows[0].name, result.rows[0].price);
         } catch (error) {
             throw error;
         }
@@ -60,7 +62,20 @@ class PgProductRepository extends ProductRepositoryInterface{
                 throw new Error(`Product with id ${id} not found`);
             }
 
-            return result.rows[0]; 
+            return new Product(result.rows[0].id, result.rows[0].name, result.rows[0].price); 
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async findById(id) {
+        const query = 'SELECT * FROM products WHERE id = $1';
+        const values = [id];
+    
+        try {
+            const result = await this.pool.query(query, values);
+    
+            return new Product(result.rows[0].id, result.rows[0].name, result.rows[0].price); 
         } catch (error) {
             throw error;
         }

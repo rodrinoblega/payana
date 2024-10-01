@@ -3,7 +3,7 @@ class ListProducts {
         this.productRepository = productRepository;
     }
     execute() {
-        var products = this.productRepository.findAll();
+        let products = this.productRepository.findAll();
         return products
     }
 }

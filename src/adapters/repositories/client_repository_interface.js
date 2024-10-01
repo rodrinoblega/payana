@@ -6,6 +6,8 @@ class ClientRepositoryInterface {
     async delete(id) {}
 
     async patch(id, updates) {}
+
+    async findById(id) {}
 }
 
 module.exports = ClientRepositoryInterface;

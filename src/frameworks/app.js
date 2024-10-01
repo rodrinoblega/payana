@@ -13,7 +13,12 @@ const DeleteProduct = require('../use_cases/delete_product')
 const ModifyProduct = require('../use_cases/modify_product')
 const PgProductRepository = require('../adapters/repositories/pg_product_repository');
 const InMemoryProductRepository = require('../adapters/repositories/mem_product_repository');
+const InvoiceController = require('../adapters/controllers/invoice_controller');
+const PgInvoiceRepository = require('../adapters/repositories/pg_invoice_repository');
+const InMemoryInvoiceRepository = require('../adapters/repositories/mem_invoice_repository');
 const pool = require('../frameworks/database');
+const CreateInvoice = require('../use_cases/create_invoice');
+const ListInvoices = require('../use_cases/list_invoices');
 
 
 const app = express();
@@ -22,6 +27,7 @@ console.log('ENV: ' + process.env.ENV)
  
 let clientRepository = new InMemoryClientRepository();
 let productRepository = new InMemoryProductRepository();
+let invoiceRepository = new InMemoryInvoiceRepository();
 
 if (process.env.ENV === 'DEV') {
     pool.connect((err) => {
@@ -34,6 +40,7 @@ if (process.env.ENV === 'DEV') {
       
    clientRepository = new PgClientRepository(pool);
    productRepository = new PgProductRepository(pool);  
+   invoiceRepository = new PgInvoiceRepository(pool);
 }
 
 const createClient = new CreateClient(clientRepository);
@@ -58,5 +65,12 @@ app.post('/product', productController.create.bind(productController));
 app.get('/products', productController.list.bind(productController));
 app.delete('/product/:id', productController.delete.bind(productController));
 app.patch('/product/:id', productController.update.bind(productController));
+
+const createInvoice = new CreateInvoice(clientRepository, productRepository, invoiceRepository)
+const listInvoices = new ListInvoices(clientRepository, productRepository, invoiceRepository)
+const invoiceController = new InvoiceController(createInvoice, listInvoices);
+app.post('/invoice', invoiceController.create.bind(invoiceController));
+app.get('/invoices', invoiceController.list.bind(invoiceController));
+
 
 module.exports = app;

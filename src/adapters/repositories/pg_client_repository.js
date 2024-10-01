@@ -1,4 +1,5 @@
 const ClientRepositoryInterface = require('./client_repository_interface');
+const Client = require('./../../entities/client')
 
 class PgClientRepository extends ClientRepositoryInterface{
     constructor(pool) {
@@ -13,7 +14,7 @@ class PgClientRepository extends ClientRepositoryInterface{
             [id, name, email]
             );
 
-            return result.rows[0];
+            return new Client(result.rows[0].id, result.rows[0].name, result.rows[0].email); 
         } catch(error) {
             throw error;
         }
@@ -34,7 +35,7 @@ class PgClientRepository extends ClientRepositoryInterface{
                 throw new Error(`Client with id ${id} not found`);
             }
     
-            return result.rows[0];
+            return new Client(result.rows[0].id, result.rows[0].name, result.rows[0].email); 
         } catch (error) {
             throw error;
         }
@@ -60,7 +61,20 @@ class PgClientRepository extends ClientRepositoryInterface{
                 throw new Error(`Client with id ${id} not found`);
             }
 
-            return result.rows[0]; 
+            return new Client(result.rows[0].id, result.rows[0].name, result.rows[0].email); 
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async findById(id) {
+        const query = 'SELECT * FROM clients WHERE id = $1';
+        const values = [id];
+    
+        try {
+            const result = await this.pool.query(query, values);
+    
+            return new Client(result.rows[0].id, result.rows[0].name, result.rows[0].email); 
         } catch (error) {
             throw error;
         }
