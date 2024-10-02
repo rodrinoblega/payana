@@ -7,7 +7,14 @@ This is a Node JavaScript application to handle clients, products and invoices.
 
 ## Service diagram
 
-The architecture is based on the concept of Clean Architecture, which includes entities, use cases, adapters, and frameworks.
+The architecture is based on the concept of Clean Architecture. Clean Architecture is a software design principle to create a clear separation between different components of an application. This structure enhances maintainability, testability, and scalability by defining clear boundaries between layers. 
+
+The architecture consists of four main layers:
+
+- Entities: Core business logic and data structures.
+- Use Cases: Defines the application’s specific business rules and the interactions between entities.
+- Adapters: Adapters: Interfaces to external systems and tools.
+- Frameworks: Libraries and frameworks that support the application.
 
 ![](static/Payana-clean.arch.jpg)
 
