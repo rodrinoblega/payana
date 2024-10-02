@@ -2,10 +2,7 @@ const request = require('supertest');
 const app = require('../src/frameworks/app');
 
 describe('/products', () => {
-    beforeEach(async () => {
-    });
-
-  
+ 
     it('should throw an error if dont provide info to change', async () => {
       const responsePost = await request(app).post('/product').send({"id":1, "name":"asd", "price":12});
       expect(responsePost.status).toBe(201);

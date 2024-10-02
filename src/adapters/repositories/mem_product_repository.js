@@ -34,6 +34,14 @@ class InMemoryProductRepository extends ProductRepositoryInterface {
 
         return product;
     }
+
+    async findById(id) {
+        for (const product of this.products) {
+            if (product.id === id) {
+                return product
+            }
+        }
+    }
 }
 
 module.exports = InMemoryProductRepository;

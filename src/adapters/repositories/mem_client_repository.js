@@ -34,6 +34,14 @@ class InMemoryClientRepository extends ClientRepositoryInterface {
 
         return client;
     }
+
+    async findById(id) {
+        for (const client of this.clients) {
+            if (client.id === id) {
+                return client
+            }
+        }
+    }
 }
 
 module.exports = InMemoryClientRepository;

@@ -2,9 +2,6 @@ const request = require('supertest');
 const app = require('../src/frameworks/app');
 
 describe('/clients', () => {
-    beforeEach(async () => {
-    });
-
   
     it('should throw an error if dont provide info to change', async () => {
       const responsePost = await request(app).post('/client').send({"id":1, "name":"asd", "email":"asd@asd.com"});

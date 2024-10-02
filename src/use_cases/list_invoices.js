@@ -10,7 +10,6 @@ class ListInvoices {
     async execute() {
         let invoicesDTO = [];
         const invoices = await this.invoiceRepository.findAll();
-
         for (const invoice of invoices) {
             const client = await this.getClient(invoice.client_id);
 
@@ -21,6 +20,7 @@ class ListInvoices {
 
 
         }
+
         return invoicesDTO
     }
 
