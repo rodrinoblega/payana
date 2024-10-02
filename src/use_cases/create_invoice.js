@@ -11,7 +11,6 @@ class CreateInvoice {
         try {
             this.validateItems(items);
 
-            console.log("hola")
             const client = await this.getClient(client_id);
 
             const { total, invoiceItems } = await this.calculateInvoiceItems(items);
