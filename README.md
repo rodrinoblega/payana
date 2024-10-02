@@ -130,6 +130,10 @@ There are tests that cover all the controllers to ensure the functionality is va
 
 ## Next steps
 
+You can run all the tests executing
+
+```npm test```
+
 - Utilize pg-mem or a similar library to create an in-memory PostgreSQL database for more realistic testing scenarios.
 - Enhance logging
 - Expand test coverage
