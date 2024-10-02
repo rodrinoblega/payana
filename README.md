@@ -133,7 +133,7 @@ There are tests that cover all the controllers to ensure the functionality is va
 - Utilize pg-mem or a similar library to create an in-memory PostgreSQL database for more realistic testing scenarios.
 - Enhance logging
 - Expand test coverage
-- Implement soft delete to product and clients to no retain tracking data
+- Implement soft delete to product and clients to retain tracking data
 - Implement a caching for frequently queried data.
 - Implement the use of a trace ID to be able to match logs to specific request
 - Set up CI/CD pipelines
