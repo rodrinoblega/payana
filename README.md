@@ -26,32 +26,32 @@ This command will:
 
 ### Client
 - GET /products --> List all the products
-```curl --request GET \
-  --url http://localhost:3000/products```
+`curl --request GET \
+  --url http://localhost:3000/products`
 
     
 - POST /product --> Create a product
-```curl --request POST \
+`curl --request POST \
   --url http://localhost:3000/product \
   --header 'Content-Type: application/json' \
   --data '{
 	"id": 7,
 	"name": "Rodrigo",
 	"price": 17
-}'```
+}'`
 
 - PATCH /product/:id --> Modify a product
-```curl --request PATCH \
+`curl --request PATCH \
   --url http://localhost:3000/product/7 \
   --header 'Content-Type: application/json' \
   --data '{
 	"name": "asd",
 	"price": 7
-}'```
+}'`
 
 - DELETE /product/:id --> Delete a product
-```curl --request DELETE \
-  --url http://localhost:3000/product/7```
+`curl --request DELETE \
+  --url http://localhost:3000/product/7`
 
 
  
