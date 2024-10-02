@@ -1,6 +1,5 @@
 const InvoiceItem = require('./../entities/invoice_item')
 
-
 class CreateInvoice {
     constructor(clientRepository, productRepository, invoiceRepository) {
         this.clientRepository = clientRepository;
@@ -12,6 +11,7 @@ class CreateInvoice {
         try {
             this.validateItems(items);
 
+            console.log("hola")
             const client = await this.getClient(client_id);
 
             const { total, invoiceItems } = await this.calculateInvoiceItems(items);

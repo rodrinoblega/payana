@@ -74,6 +74,10 @@ class PgProductRepository extends ProductRepositoryInterface{
     
         try {
             const result = await this.pool.query(query, values);
+
+            if (result.rows.length === 0) {
+                return null;
+            }
     
             return new Product(result.rows[0].id, result.rows[0].name, result.rows[0].price); 
         } catch (error) {

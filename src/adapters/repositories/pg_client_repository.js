@@ -67,12 +67,16 @@ class PgClientRepository extends ClientRepositoryInterface{
         }
     }
 
-    async findById(id) {
+    async findById(client_id) {
         const query = 'SELECT * FROM clients WHERE id = $1';
-        const values = [id];
+        const values = [client_id];
     
         try {
             const result = await this.pool.query(query, values);
+
+            if (result.rows.length === 0) {
+                return null;
+            }
     
             return new Client(result.rows[0].id, result.rows[0].name, result.rows[0].email); 
         } catch (error) {
