@@ -126,13 +126,13 @@ curl --request POST \
 ```
 ## Testing Strategy
 
-There are tests that cover all the controllers to ensure the functionality is validated. Instead of connecting to a real database during testing, we use dependency injection to swap in an in-memory database. This decision has been made to obtain a faster execution and minimize the resources that we use.
-
-## Next steps
-
 You can run all the tests executing
 
 ```npm test```
+
+There are tests that cover all the controllers to ensure the functionality is validated. Instead of connecting to a real database during testing, we use dependency injection to swap in an in-memory database. This decision has been made to obtain a faster execution and minimize the resources that we use.
+
+## Next steps
 
 - Utilize pg-mem or a similar library to create an in-memory PostgreSQL database for more realistic testing scenarios.
 - Enhance logging
