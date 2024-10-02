@@ -1,13 +1,13 @@
 # Payana - Invoice creation system
 
-![technology Node](https://img.shields.io/badge/technology-Node-blue.svg)
+![Technology Node](https://img.shields.io/badge/technology-Node-blue.svg)
 ![Language Javascript](https://img.shields.io/badge/Language-JavaScript-brightgreen.svg)
 
 This is a Node JavaScript application to handle clients, products and invoices.
 
 ## Service diagram
 
-The architecture is based on the concept of clean architecture in wich we have entities, use cases, adapters and frameworks.
+The architecture is based on the concept of Clean Architecture, which includes entities, use cases, adapters, and frameworks.
 
 ![](static/Payana-clean.arch.jpg)
 
