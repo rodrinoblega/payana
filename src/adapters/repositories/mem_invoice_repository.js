@@ -37,6 +37,12 @@ class InMemoryInvoiceRepository extends InvoiceRepositoryInterface {
     async findAll() {
         return this.invoices;
     }
+
+    async startTransaction() {}
+
+    async commitTransaction() {}
+
+    async rollbackTransaction() {}
 }
 
 module.exports = InMemoryInvoiceRepository;

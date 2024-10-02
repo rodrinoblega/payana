@@ -6,6 +6,12 @@ class InvoiceRepositoryInterface {
     async findAll() {}
 
     async findItemsForInvoice(id) {}
+
+    async startTransaction() {}
+
+    async commitTransaction() {}
+
+    async rollbackTransaction() {}
 }
 
 

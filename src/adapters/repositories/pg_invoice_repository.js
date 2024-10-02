@@ -56,5 +56,17 @@ class PgInvoiceRepository extends InvoiceRepositoryInterface{
         }
     }
 
+    async startTransaction() {
+        await this.pool.query('BEGIN');
+    }
+
+    async commitTransaction() {
+        await this.pool.query('COMMIT');
+    }
+
+    async rollbackTransaction() {
+        await this.pool.query('ROLLBACK');
+    }
+
 }
 module.exports = PgInvoiceRepository;

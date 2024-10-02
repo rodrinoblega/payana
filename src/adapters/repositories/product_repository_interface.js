@@ -8,6 +8,7 @@ class ProductRepositoryInterface {
     async patch(id, updates) {}
 
     async findById(id) {}
+    
 }
 
 module.exports = ProductRepositoryInterface;

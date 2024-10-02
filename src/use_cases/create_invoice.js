@@ -16,12 +16,17 @@ class CreateInvoice {
 
             const { total, invoiceItems } = await this.calculateInvoiceItems(items);
 
+            await this.invoiceRepository.startTransaction();
+            
             const invoice = await this.createInvoice(client.id, total); 
 
             await this.saveInvoiceItems(invoice.id, invoiceItems); 
 
+            await this.invoiceRepository.commitTransaction();
+
             return invoice;
         } catch (error) {
+            await this.invoiceRepository.rollbackTransaction();
             throw error;
         }
     }
