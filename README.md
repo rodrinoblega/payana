@@ -13,7 +13,7 @@ The architecture consists of four main layers:
 
 - Entities: Core business logic and data structures.
 - Use Cases: Defines the application’s specific business rules and the interactions between entities.
-- Adapters: Adapters: Interfaces to external systems and tools.
+- Adapters: Interfaces to external systems and tools.
 - Frameworks: Libraries and frameworks that support the application.
 
 ![](static/Payana-clean.arch.jpg)
